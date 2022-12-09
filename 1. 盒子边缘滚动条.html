@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>盒子边缘滚动条</title>
+   <style>
+      * {
+         margin: 0;
+      }
+
+      .box {
+         width: 100px;
+         height: 50px;
+         margin: 100px auto;
+         border: 3px solid orange;
+         position: relative;
+         overflow: hidden;
+         border: solid;
+      }
+
+      .box::before {
+         content: "";
+         display: inline-block;
+         width: 100px;
+         height: 50px;
+         background-color: green;
+         opacity: .5;
+         position: absolute;
+         left: -50%;
+         top: -50%;
+         transform-origin: 100% 100%;
+         animation: move 800ms linear infinite;
+         z-index: -111;
+      }
+
+      .box::after {
+         content: "";
+         display: inline-block;
+         width: 93px;
+         height: 44px;
+         margin: 3px 3px;
+         background-color: #fff;
+      }
+
+      @keyframes move {
+         100% {
+            transform: rotate(360deg);
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="box">
+   </div>
+</body>
+
+</html>
